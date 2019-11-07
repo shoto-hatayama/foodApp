@@ -1,0 +1,9 @@
+.form-group{
+    text-align:left;
+}
+
+.flash_message{
+    position:absolute;
+    top:50%;
+    width:100%;
+}
