@@ -1,6 +1,14 @@
 @extends('layout')
 
 @section('content')
+
+<!-- フラシュメッセージ表示-->
+@if(session('flash_message'))
+  <div class="flash_message bg-success text-center py-3 my-0">
+      {{ session('flash_message')}}
+  </div>
+@endif
+
 <button class="btn btn-link formModal" data-remodal-target="modal">登録</button>
 <div class="remodal" data-remodal-id="modal">
   <button data-remodal-action="close" class="remodal-close"></button>
