@@ -13,6 +13,10 @@ class FoodController extends Controller
     }
 
     public function store(Request $request){
+        //バリデーション
+        $validatedData = $request->validate([
+            'shopName' =>'required',
+        ]);
         //アップロードされたファイルの保存処理
         if($request->hasFile('photo')){
             $path = $request->photo->store('public/foodImg');
@@ -36,5 +40,9 @@ class FoodController extends Controller
         $Food->save();
 
         return redirect('/')->with('flash_message','登録が完了しました♪');
+    }
+
+    public function genreSearch(Request $request){
+        return redirect('/');
     }
 }

@@ -133,6 +133,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'shopName' => [
+            'required' => '店の名前を入力してください。',
+        ],
     ],
 
     /*
