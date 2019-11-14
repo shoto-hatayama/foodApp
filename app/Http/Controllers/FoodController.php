@@ -9,19 +9,22 @@ class FoodController extends Controller
     //
     public function index(Request $request){
         $list = Food::all();
-        return view('index',['list' => $list]);
+        return view('index',['lists' => $list]);
     }
 
     public function store(Request $request){
         //アップロードされたファイルの保存処理
-        $file_name = $request->file('photo')->getClientOriginalName();
-        $request->file('photo')->storeAs('',$file_name);
+        if($request->hasFile('photo')){
+            $path = $request->photo->store('public/foodImg');
+            $photoPath = str_replace('public/','storage/',$path);
+        }else{
+            $photoPath = "storage/foodImg/no_image.jpg";
+        }
         //フォームの値を保存
         $Food = new Food;
         $Food->shopName = $request->shopName;
         $Food->food = $request->food;
-        $Food->location = $request->location;
-        $Food->photo = $request->photo;
+        $Food->location = $location;
         $Food->comment = $request->comment;
         $Food->save();
 
