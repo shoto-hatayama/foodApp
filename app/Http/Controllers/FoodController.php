@@ -20,11 +20,18 @@ class FoodController extends Controller
         }else{
             $photoPath = "storage/foodImg/no_image.jpg";
         }
+        //locationに入力がない場合shopNameの値を入れる
+        if($request->has('location')){
+            $location = $request->location;
+        }else{
+            $location = $request->shopName;
+        }
         //フォームの値を保存
         $Food = new Food;
         $Food->shopName = $request->shopName;
         $Food->food = $request->food;
         $Food->location = $location;
+        $Food->photo = $photoPath;
         $Food->comment = $request->comment;
         $Food->save();
 
