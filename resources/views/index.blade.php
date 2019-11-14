@@ -2,14 +2,55 @@
 
 @section('content')
 
-<!-- フラシュメッセージ表示-->
+<!-- フラッシュメッセージ表示-->
 @if(session('flash_message'))
-  <div class="flash_message bg-success text-center py-3 my-0">
+  <div class="flash_message bg-success  text-light text-center py-3 my-0">
       {{ session('flash_message')}}
   </div>
 @endif
 
-<button class="btn btn-link formModal" data-remodal-target="modal">登録</button>
+<!-- 登録＆検索フォーム -->
+<div class="container">
+    <form class="form-inline" action="genreSearch" method="post">
+        <div class="form-group">
+          <input type="text" class="form-control" id="genreSearch" name="genre">
+          <button class="btn-info" type="submit">ジャンル検索</button>
+        </div>
+        <button class="btn btn-link formModal" data-remodal-target="modal">登録</button>    
+    </form>
+</div>
+
+<div class="container">
+  <div class="row">
+  @foreach($lists as $data)
+  <div class="col-sm-12 col-lg-4">
+    <div class="card shadow-lg">
+        <div class="row">
+          <img class="col" id="{{ 'foodImg'.$data->id }}" src="{{ $data->photo }}" alt="">
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <a href=""><div class="col">{{ $data->shopName }}</div></a>
+          </div>
+          <div class="row">
+            <div class="col">{{ $data->food }}</div>
+          </div>
+          <div class="row">
+            <div class="col">{{ $data->comment }}</div>
+          </div>
+          <div class="row">
+            <iframe class="mapContents col d-none" id="{{ 'shopMap'.$data->id }}" width="600" height="450" frameborder="0" style="border:0;" src="{{'https://www.google.com/maps/embed/v1/place?key=AIzaSyCos3wGLXvwjoB91TVZilc9YFbsr3NNqt0&q='.$data->location.'&zoom=15'}}" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  @endforeach
+  </div>
+</div>
+  
+  
+</div>
+<!-- モーダル -->
 <div class="remodal" data-remodal-id="modal">
   <button data-remodal-action="close" class="remodal-close"></button>
   <form id="modal" action="store" method="post" enctype="multipart/form-data">
