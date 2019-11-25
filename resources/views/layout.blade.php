@@ -8,13 +8,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="{{asset('js/remodal.js')}}"></script>
     <script src="{{asset('js/foods.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{asset('css/remodal.css')}}">
     <link rel="stylesheet" href="{{asset('css/remodal-default-theme.css')}}">
     <title></title>
 </head>
-<header class="container-fluid bg-danger">
-    <div class="text-center h1 text-light">デリサーチ</div>
+<header class="container-fluid bg-dark">
+    <div class="text-center h1 text-light">ぱくぱく日記</div>
 </header>
 <body>
     @yield('content')

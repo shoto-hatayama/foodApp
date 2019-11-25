@@ -16,7 +16,7 @@
           <input type="text" class="form-control" id="genreSearch" name="genre">
           <button class="btn-info" type="submit">ジャンル検索</button>
         </div>
-        <button class="btn btn-link formModal" data-remodal-target="modal">登録</button>    
+        <button class="btn btn-link formModal" data-remodal-target="modal">投稿</button>    
     </form>
 </div>
 <!-- エラーメッセージ表示 -->
@@ -39,13 +39,17 @@
         </div>
         <div class="card-body">
           <div class="row">
-            <a href=""><div class="col">{{ $data->shopName }}</div></a>
-          </div>
-          <div class="row">
             <div class="col">{{ $data->food }}</div>
           </div>
           <div class="row">
             <div class="col">{{ $data->comment }}</div>
+          </div>
+          <div class="row">
+            <a href="{{ $data->url }}">
+              @isset($data->url)
+              <div class="col">くわしくはこちらへ☆彡</div>
+              @endisset
+            </a>
           </div>
           <div class="row">
             <iframe class="mapContents col d-none" id="{{ 'shopMap'.$data->id }}" width="600" height="450" frameborder="0" style="border:0;" src="{{'https://www.google.com/maps/embed/v1/place?key=AIzaSyCos3wGLXvwjoB91TVZilc9YFbsr3NNqt0&q='.$data->location.'&zoom=15'}}" allowfullscreen></iframe>
@@ -55,6 +59,7 @@
     </div>
   @endforeach
   </div>
+    {{ $lists->links() }}
 </div>
   
   
@@ -81,8 +86,12 @@
           <input type="file" class="form-control-file" name="photo">
       </div>
       <div class="form-group">
+          <label for="inputUrl">URL</label>
+          <input type="text" class="form-control" name="url">
+      </div>
+      <div class="form-group">
           <label for="inputComment">ひとこと</label>
-          <input type="text" class="form-control" id="inputComment" name="comment">
+          <textarea type="text" class="form-control" id="inputComment" name="comment"></textarea>
       </div>
       <!-- //ジャンルは未実装
       <div class="form-group">
