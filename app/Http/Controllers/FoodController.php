@@ -25,7 +25,7 @@ class FoodController extends Controller
             $photoPath = "storage/foodImg/no_image.jpg";
         }
         //locationに入力がない場合shopNameの値を入れる
-        if($request->has('location')){
+        if($request->filled('location')){
             $location = $request->location;
         }else{
             $location = $request->shopName;
@@ -36,6 +36,7 @@ class FoodController extends Controller
         $Food->food = $request->food;
         $Food->location = $location;
         $Food->photo = $photoPath;
+        $Food->url = $request->url;
         $Food->comment = $request->comment;
         $Food->save();
 
