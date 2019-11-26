@@ -16,6 +16,12 @@ $(function(){
         
     });
 
+    $('a').on('click',function(){
+        var editId = $(this).attr('id');
+        getId = editId.replace('editId','');
+        $.get("edit",{id:getId});
+    });
+
     $('#imgChangeCheck').on('change',function(){
         console.log($(this).prop('checked'));
         if($(this).prop('checked')){

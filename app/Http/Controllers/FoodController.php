@@ -42,6 +42,12 @@ class FoodController extends Controller
         return redirect('/')->with('flash_message','登録が完了しました♪');
     }
 
+    public function edit(Request $request){
+        $data = Food::find($request->id);
+        // $data = $list->toArray();
+        // dd($list->id);
+        return view('edit',['data' => $data]);
+    }
     public function genreSearch(Request $request){
         return redirect('/');
     }

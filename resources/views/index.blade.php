@@ -38,6 +38,9 @@
           <img class="col" id="{{ 'foodImg'.$data->id }}" src="{{ $data->photo }}" alt="">
         </div>
         <div class="card-body">
+          <h5 class="row">
+            <a id="{{ 'editId'.$data->id }}" href="edit/{{$data->id}}"><div class="col">{{ $data->shopName }}</div></a>
+          </h5>
           <div class="row">
             <div class="col">{{ $data->food }}</div>
           </div>
