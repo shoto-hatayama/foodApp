@@ -16,4 +16,15 @@ $(function(){
         
     });
 
+    $('#imgChangeCheck').on('change',function(){
+        console.log($(this).prop('checked'));
+        if($(this).prop('checked')){
+            $('#changeImg').fadeIn(1000);
+        }else{
+            $('#changeImg').fadeOut(1000);
+        }
+
+    })
+
+
 });

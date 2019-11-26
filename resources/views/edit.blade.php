@@ -36,7 +36,7 @@
         </div>
         <div class="form-check">
           <input class="form-check-input" type="checkbox" id="imgChangeCheck">
-          <label class="form-check-label" >画像を変更する</label>
+          <label class="form-check-label" for="imgChangeCheck" >画像を変更する</label>
         </div>
         <div class="form-group" id="changeImg">
             <label>写真</label>
