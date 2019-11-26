@@ -8,7 +8,7 @@ class FoodController extends Controller
 {
     //
     public function index(Request $request){
-        $list = Food::all();
+        $list = Food::orderBy('id','desc')->paginate(6);
         return view('index',['lists' => $list]);
     }
 
