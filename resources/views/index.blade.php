@@ -11,10 +11,10 @@
 
 <!-- 登録＆検索フォーム -->
 <div class="container">
-    <form class="form-inline" action="genreSearch" method="post">
+    <form class="form-inline" action="/" method="post">
         <div class="form-group">
-          <input type="text" class="form-control" id="genreSearch" name="genre">
-          <button class="btn-info" type="submit">ジャンル検索</button>
+          <input type="text" class="form-control" id="keyWordSearch" name="keyWord">
+          <button class="btn-info" type="submit">キーワード検索</button>
         </div>
         <button class="btn btn-link formModal" data-remodal-target="modal">投稿</button>    
     </form>
@@ -33,10 +33,9 @@
   <div class="row">
   @foreach($lists as $data)
   <div class="col-sm-12 col-lg-4">
-    <div class="card shadow-lg">
     <div class="card shadow-lg hoverBorder">
         <div class="row">
-          <img class="col" id="{{ 'foodImg'.$data->id }}" src="{{ $data->photo }}" alt="">
+          <img class="col  row-eq-height" id="{{ 'foodImg'.$data->id }}" src="{{ $data->photo }}" alt="">
         </div>
         <div class="card-body">
           <h5 class="row">

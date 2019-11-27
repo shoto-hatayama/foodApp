@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'foodController@index');
+Route::post('/','foodController@index');
 Route::post('/store','foodController@store');
 Route::get('/edit/{id?}','foodCOntroller@edit',['id' => "{id}"]);
 Route::post('/edit/{id?}','foodCOntroller@edit',['id' => "{id}"]);

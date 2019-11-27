@@ -10,8 +10,12 @@ class FoodController extends Controller
 {
     //
     public function index(Request $request){
-
-        $list = Food::orderBy('id','desc')->paginate(6);
+        if($request->filled('keyWord')){
+            $keyWord = mb_convert_kana($request->keyWord,"asHcV");
+            $list = Food::where('keyWord','like',"%{$keyWord}%")->orderBy('id','desc')->paginate(6);
+        }else{
+            $list = Food::orderBy('id','desc')->paginate(6);
+        }
         return view('index',['lists' => $list]);
     }
 
@@ -33,6 +37,7 @@ class FoodController extends Controller
         }else{
             $location = $request->shopName;
         }
+        $keyWord = mb_convert_kana($request->shopName,"asHcV");
         //フォームの値を保存
         $Food = new Food;
         $Food->shopName = $request->shopName;
@@ -41,6 +46,7 @@ class FoodController extends Controller
         $Food->photo = $photoPath;
         $Food->url = $request->url;
         $Food->comment = $request->comment;
+        $Food->keyWord = $keyWord;
         $Food->save();
 
         return redirect('/')->with('flash_message','登録が完了しました♪');
@@ -70,13 +76,14 @@ class FoodController extends Controller
             }else{
                 $location = $request->shopName;
             }
-
+            $keyWord = mb_convert_kana($request->shopName,"asHcV");
             $data->fill([
                 'shopName' => $request->shopName,
                 'food' => $request->food,
                 'location' => $location,
                 'url' => $request->url,
-                'comment' => $request->comment
+                'comment' => $request->comment,
+                'keyWord' => $keyWord
                 ])->save();
                 return redirect('/')->with('flash_message','情報を更新しました。');
         }
