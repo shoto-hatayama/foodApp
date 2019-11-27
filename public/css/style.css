@@ -11,4 +11,7 @@
 
 #changeImg{
     display:none;
+.border{
+    border-width:medium !important;
+    border-color:#FFA500 !important;
 }

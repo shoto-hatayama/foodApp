@@ -34,6 +34,7 @@
   @foreach($lists as $data)
   <div class="col-sm-12 col-lg-4">
     <div class="card shadow-lg">
+    <div class="card shadow-lg hoverBorder">
         <div class="row">
           <img class="col" id="{{ 'foodImg'.$data->id }}" src="{{ $data->photo }}" alt="">
         </div>
