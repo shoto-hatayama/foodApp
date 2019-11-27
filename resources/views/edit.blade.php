@@ -20,7 +20,7 @@
 @endif
   
 <div class="container">
-  <form id="modal" action="edit" method="post" enctype="multipart/form-data">
+  <form id="modal" action="" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="inputShopName">店の名前</label>
@@ -55,8 +55,11 @@
             <label for="inputgenre">ジャンル</label>
             <input type="text" class="form-control" id="inputgenre" name="genre">
         </div> -->
-        <button data-remodal-action="cancel" class="remodal-cancel">閉じる</button>
-        <button data-remodal-action="confirm" class="remodal-confirm">登録</button>
+
+          <button class="btn btn-danger col-md-2 offset-md-4">削除</button>
+          <button type="submit" class="btn btn-success col-md-2 col-md-offset-1">登録</button>
+
+        
   </form>
 </div>
 @endsection
