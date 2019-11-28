@@ -56,8 +56,8 @@
             <input type="text" class="form-control" id="inputgenre" name="genre">
         </div> -->
 
-          <button class="btn btn-danger col-md-2 offset-md-4">削除</button>
-          <button type="submit" class="btn btn-success col-md-2 col-md-offset-1">登録</button>
+          <button type="submit" name="deleteSubmit" class="btn btn-danger col-md-2 offset-md-4">削除</button>
+          <button type="submit" name="editSubmit" class="btn btn-success col-md-2 col-md-offset-1">登録</button>
 
         
   </form>

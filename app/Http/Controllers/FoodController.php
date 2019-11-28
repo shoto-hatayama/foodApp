@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 class FoodController extends Controller
 {
-    //
     public function index(Request $request){
         if($request->filled('keyWord')){
             $keyWord = mb_convert_kana($request->keyWord,"asHcV");
@@ -54,7 +53,10 @@ class FoodController extends Controller
 
     public function edit(Request $request){
         $data = Food::find($request->id);
-        if($request->isMethod('post')){
+        if($request->has('deleteSubmit')){
+            $data->delete();
+            return redirect('/')->with('flash_message','削除しました！');
+        }else if($request->has('editSubmit')){
             //バリデーション
             $validate = $request->validate([
                 'shopName' => 'required',
@@ -85,10 +87,9 @@ class FoodController extends Controller
                 'comment' => $request->comment,
                 'keyWord' => $keyWord
                 ])->save();
-                return redirect('/')->with('flash_message','情報を更新しました。');
+            return redirect('/')->with('flash_message','情報を更新しました。');
         }
-        // $data = $list->toArray();
-        // dd($list->id);
+
         return view('edit',['data' => $data]);
     }
     public function genreSearch(Request $request){
