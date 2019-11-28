@@ -11,6 +11,13 @@
 
 #changeImg{
     display:none;
+}
+
+.row-eq-height{
+    height:45vh;
+    object-fit: cover;
+}
+
 .border{
     border-width:medium !important;
     border-color:#FFA500 !important;
