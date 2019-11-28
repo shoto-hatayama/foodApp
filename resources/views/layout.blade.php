@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{asset('css/remodal-default-theme.css')}}">
     <title></title>
 </head>
-<header class="container-fluid bg-dark">
+<header class="container-fluid bg-orange">
     <div class="text-center h1 text-light">ぱくぱく日記</div>
 </header>
 <body>

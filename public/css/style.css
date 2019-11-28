@@ -21,6 +21,12 @@
 .border{
     border-width:medium !important;
     border-color:#FFA500 !important;
+}
+
+.bg-orange{
+    background-color: #FFA500;
+}
+
 .required::after{
     content:"※必須";
     color:red;

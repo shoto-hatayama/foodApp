@@ -34,10 +34,10 @@ $(function(){
 
     $('.hoverBorder').on({
         'mouseenter':function(){
-            $(this).addClass('border border-warning');
+            $(this).addClass('border');
         },
         'mouseleave':function(){
-            $(this).removeClass('border border-warning');
+            $(this).removeClass('border');
         }
     })
 
