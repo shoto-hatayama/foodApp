@@ -23,7 +23,7 @@
   <form id="modal" action="" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <label for="inputShopName">店の名前</label>
+            <label for="inputShopName" class="required">店の名前</label>
             <input type="text" class="form-control" id="inputShopName" name="shopName" value="{{ $data->shopName }}">
         </div>
         <div class="form-group">

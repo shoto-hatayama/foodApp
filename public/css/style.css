@@ -14,4 +14,7 @@
 .border{
     border-width:medium !important;
     border-color:#FFA500 !important;
+.required::after{
+    content:"※必須";
+    color:red;
 }
