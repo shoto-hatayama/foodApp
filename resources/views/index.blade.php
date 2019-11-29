@@ -32,7 +32,7 @@
 <div class="container">
   <div class="row">
   @foreach($lists as $data)
-  <div class="col-sm-12 col-lg-4">
+  <div class="col-sm-12 col-lg-4 mb-5">
     <div class="card shadow-lg hoverBorder">
         <div class="row">
           <img class="col  row-eq-height" id="{{ 'foodImg'.$data->id }}" src="{{ $data->photo }}" alt="">

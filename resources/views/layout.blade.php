@@ -15,9 +15,10 @@
     <title></title>
 </head>
 <header class="container-fluid bg-orange">
-    <div class="text-center h1 text-light">ぱくぱく日記</div>
+    <a href="/"><div class="text-center h1 text-light">ぱくぱく日記</div></a>
 </header>
 <body>
     @yield('content')
 </body>
+<footer class="footer mt-5"></footer>
 </html>

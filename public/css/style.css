@@ -20,7 +20,7 @@
 
 .border{
     border-width:medium !important;
-    border-color:#FFA500 !important;
+    border-color:#FFA500;
 }
 
 .bg-orange{
@@ -30,4 +30,9 @@
 .required::after{
     content:"※必須";
     color:red;
+}
+
+.footer{
+    height:10vh;
+    background-color:#FFA500;
 }
