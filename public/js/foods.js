@@ -41,5 +41,13 @@ $(function(){
         }
     })
 
+    $('#deleteSubmit').on('click',function(){
+        if(confirm('削除してもいいですか？')){
+            return true;
+        }else{
+            return false;
+        }
+    });
+
 
 });
