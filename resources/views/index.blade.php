@@ -2,10 +2,16 @@
 
 @section('content')
 
-<!-- フラッシュメッセージ表示-->
-@if(session('flash_message'))
+<!-- フラッシュメッセージ表示(登録・更新時）-->
+@if(session('success_message'))
   <div class="flash_message bg-success  text-light text-center py-3 my-0">
-      {{ session('flash_message')}}
+      {{ session('delete_message')}}
+  </div>
+@endif
+<!-- フラッシュメッセージ表示（削除時） -->
+@if(session('delete_message'))
+  <div class="flash_message bg-danger  text-light text-center py-3 my-0">
+      {{ session('delete_message')}}
   </div>
 @endif
 

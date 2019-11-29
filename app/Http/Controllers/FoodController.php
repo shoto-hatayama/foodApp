@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 class FoodController extends Controller
 {
     public function index(Request $request){
+        //検索時あいまい検索処理
         if($request->filled('keyWord')){
             $keyWord = mb_convert_kana($request->keyWord,"asHcV");
             $list = Food::where('keyWord','like',"%{$keyWord}%")->orderBy('id','desc')->paginate(6);
@@ -48,14 +49,14 @@ class FoodController extends Controller
         $Food->keyWord = $keyWord;
         $Food->save();
 
-        return redirect('/')->with('flash_message','登録が完了しました♪');
+        return redirect('/')->with('success_message','登録が完了しました♪');
     }
 
     public function edit(Request $request){
         $data = Food::find($request->id);
         if($request->has('deleteSubmit')){
-            $data->delete();
-            return redirect('/')->with('flash_message','削除しました！');
+            //$data->delete();
+            return redirect('/')->with('delete_message','削除しました！');
         }else if($request->has('editSubmit')){
             //バリデーション
             $validate = $request->validate([
@@ -87,7 +88,7 @@ class FoodController extends Controller
                 'comment' => $request->comment,
                 'keyWord' => $keyWord
                 ])->save();
-            return redirect('/')->with('flash_message','情報を更新しました。');
+            return redirect('/')->with('success_message','情報を更新しました。');
         }
 
         return view('edit',['data' => $data]);
