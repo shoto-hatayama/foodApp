@@ -17,14 +17,17 @@
 
 <!-- 登録＆検索フォーム -->
 <div class="container">
-    <form class="form-inline" action="/" method="post">
+    <form class="form-inline offset-lg-8 col-lg-4 col-sm-6" action="/" method="post">
         <div class="form-group">
-          <input type="text" class="form-control" id="keyWordSearch" name="keyWord">
-          <button class="btn-info" type="submit">キーワード検索</button>
+          <input type="text" class="form-control border-dark" id="keyWordSearch" name="keyWord">
         </div>
-        <button class="btn btn-link formModal" data-remodal-target="modal">投稿</button>    
+        <button class="btn btn-info ml-2 d-none d-md-block" type="submit">検索</button>
+        <button class="btn btn-info ml-2 d-md-none mb-3" type="submit">検索</button>
+        <button class="btn btn-success formModal rounded-pill d-none d-md-block ml-3" data-remodal-target="modal">投稿</button>
     </form>
+    <button class="btn btn-success formModal rounded-pill d-md-none fixed-bottom col-sm-12" data-remodal-target="modal">投稿</button>
 </div>
+
 <!-- エラーメッセージ表示 -->
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -35,44 +38,47 @@
         </ul>
     </div>
 @endif
+
+<!-- 登録内容表示 -->
 <div class="container">
   <div class="row">
-  @foreach($lists as $data)
-  <div class="col-sm-12 col-lg-4 mb-5">
-    <div class="card shadow-lg hoverBorder">
-        <div class="row">
-          <img class="col  row-eq-height" id="{{ 'foodImg'.$data->id }}" src="{{ $data->photo }}" alt="">
-        </div>
-        <div class="card-body">
-          <h5 class="row">
-            <a id="{{ 'editId'.$data->id }}" href="edit/{{$data->id}}"><div class="col">{{ $data->shopName }}</div></a>
-          </h5>
+    @foreach($lists as $data)
+    <div class="col-sm-12 col-lg-4 mb-5">
+      <div class="card shadow-lg hoverBorder">
           <div class="row">
-            <div class="col">{{ $data->food }}</div>
+            <img class="col  row-eq-height" id="{{ 'foodImg'.$data->id }}" src="{{ $data->photo }}" alt="">
           </div>
-          <div class="row">
-            <div class="col">{{ $data->comment }}</div>
-          </div>
-          <div class="row">
-            <a href="{{ $data->url }}">
-              @isset($data->url)
-              <div class="col">くわしくはこちらへ☆彡</div>
-              @endisset
-            </a>
-          </div>
-          <div class="row">
-            <iframe class="mapContents col d-none" id="{{ 'shopMap'.$data->id }}" width="600" height="450" frameborder="0" style="border:0;" src="{{'https://www.google.com/maps/embed/v1/place?key=AIzaSyCos3wGLXvwjoB91TVZilc9YFbsr3NNqt0&q='.$data->location.'&zoom=15'}}" allowfullscreen></iframe>
+          <div class="card-body">
+            <h5 class="row">
+              <a id="{{ 'editId'.$data->id }}" href="edit/{{$data->id}}"><div class="col">{{ $data->shopName }}</div></a>
+            </h5>
+            <div class="row">
+              <div class="col">{{ $data->food }}</div>
+            </div>
+            <div class="row">
+              <div class="col">{{ $data->comment }}</div>
+            </div>
+            <div class="row">
+              <a href="{{ $data->url }}">
+                @isset($data->url)
+                <div class="col">くわしくはこちらへ☆彡</div>
+                @endisset
+              </a>
+            </div>
+            <div class="row">
+              <iframe class="mapContents col d-none" id="{{ 'shopMap'.$data->id }}" width="600" height="450" frameborder="0" style="border:0;" src="{{'https://www.google.com/maps/embed/v1/place?key=AIzaSyCos3wGLXvwjoB91TVZilc9YFbsr3NNqt0&q='.$data->location.'&zoom=15'}}" allowfullscreen></iframe>
+            </div>
           </div>
         </div>
       </div>
+    @endforeach
     </div>
-  @endforeach
-  </div>
     {{ $lists->links() }}
-</div>
+  </div>
   
   
 </div>
+
 <!-- モーダル -->
 <div class="remodal" data-remodal-id="modal">
   <button data-remodal-action="close" class="remodal-close"></button>
