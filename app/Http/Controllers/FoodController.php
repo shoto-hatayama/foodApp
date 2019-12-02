@@ -55,7 +55,7 @@ class FoodController extends Controller
     public function edit(Request $request){
         $data = Food::find($request->id);
         if($request->has('deleteSubmit')){
-            //$data->delete();
+            $data->delete();
             return redirect('/')->with('delete_message','削除しました！');
         }else if($request->has('editSubmit')){
             //バリデーション
