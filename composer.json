@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2",
         "ext-intl": "*",
+        "benjamincrozat/laravel-dropbox-driver": "^2.0",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
