@@ -25,7 +25,7 @@
         <button class="btn btn-info ml-2 d-md-none mb-3" type="submit">検索</button>
         <button class="btn btn-success formModal rounded-pill d-none d-md-block ml-3" data-remodal-target="modal">投稿</button>
     </form>
-    <button class="btn btn-success formModal rounded-pill d-md-none fixed-bottom col-sm-12" data-remodal-target="modal">投稿</button>
+    <button class="btn btn-color formModal rounded-pill d-md-none fixed-bottom col-sm-12" data-remodal-target="modal">投稿</button>
 </div>
 
 <!-- エラーメッセージ表示 -->
@@ -46,7 +46,7 @@
     <div class="col-sm-12 col-lg-4 mb-5">
       <div class="card shadow-lg hoverBorder">
           <div class="row">
-            <img class="col  row-eq-height" id="{{ 'foodImg'.$data->id }}" src="{{ $data->photo }}" alt="">
+            <img class="col  row-eq-height" id="{{ 'foodImg'.$data->id }}" src="{{ $data->storage_path }}" alt="">
           </div>
           <div class="card-body">
             <h5 class="row">
