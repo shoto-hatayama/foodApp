@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Food;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Inetervention\Image\Facades\Image;
 class FoodController extends Controller
 {
     public function index(Request $request){
@@ -26,7 +27,13 @@ class FoodController extends Controller
         ]);
         //アップロードされたファイルの保存処理
         if($request->hasFile('photo')){
-            $photoName = $request->file('photo')->store('/','dropbox');
+            //画像ファイルリサイズ処理
+            $file = $request->file('photo');
+            $image = Image::make($file)
+                ->resize(1200,null,function($constraint){
+                    $constraint->aspectRatio();
+                });
+            $photoName = $image->store('/','dropbox');
         }else{
             $photoName = "no_image.jpg";
         }
@@ -65,7 +72,13 @@ class FoodController extends Controller
             ]) ;
             //アップロードされたファイルの保存・削除処理
             if($request->hasFile('photo')){
-                $photoName = $request->file('photo')->store('/','dropbox');
+                //画像ファイルリサイズ処理
+                $file = $request->file('photo');
+                $image = Image::make($file)
+                    ->resize(1200,null,function($constraint){
+                        $constraint->aspectRatio();
+                    });
+                $photoName = $image->store('/','dropbox');
                 $storagePath = Storage::disk('dropbox')->url($photoName);
                 
                 //以前の画像ファイルの削除
