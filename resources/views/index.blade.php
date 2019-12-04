@@ -5,7 +5,7 @@
 <!-- フラッシュメッセージ表示(登録・更新時）-->
 @if(session('success_message'))
   <div class="flash_message bg-success  text-light text-center py-3 my-0">
-      {{ session('delete_message')}}
+      {{ session('success_message')}}
   </div>
 @endif
 <!-- フラッシュメッセージ表示（削除時） -->

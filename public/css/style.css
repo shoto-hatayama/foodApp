@@ -14,7 +14,7 @@
 }
 
 .row-eq-height{
-    height:30vh;
+    height:40vh;
     object-fit: cover;
 }
 
@@ -38,5 +38,5 @@
 }
 
 .btn-color{
-    background-color:#ffff00;
+    background-color:#f7f0cf;
 }
