@@ -14,13 +14,13 @@
 }
 
 .row-eq-height{
-    height:45vh;
+    height:40vh;
     object-fit: cover;
 }
 
 .border{
     border-width:medium !important;
-    border-color:#FFA500;
+    border-color:#FFA500 !important;
 }
 
 .bg-orange{
@@ -35,4 +35,8 @@
 .footer{
     height:10vh;
     background-color:#FFA500;
+}
+
+.btn-color{
+    background-color:#f7f0cf;
 }

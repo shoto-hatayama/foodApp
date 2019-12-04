@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Food;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 class FoodController extends Controller
 {
     public function index(Request $request){
@@ -26,11 +27,17 @@ class FoodController extends Controller
         ]);
         //アップロードされたファイルの保存処理
         if($request->hasFile('photo')){
-            $path = $request->photo->store('public/foodImg');
-            $photoPath = str_replace('public/','storage/',$path);
+            //画像ファイルリサイズ処理
+            $file = $request->file('photo');
+            $image = Image::make($file)
+                ->resize(1200,null,function($constraint){
+                    $constraint->aspectRatio();
+                });
+            $photoName = $image->store('/','dropbox');
         }else{
-            $photoPath = "storage/foodImg/no_image.jpg";
+            $photoName = "no_image.jpg";
         }
+        $storagePath = Storage::disk('dropbox')->url($photoName);
         //locationに入力がない場合shopNameの値を入れる
         if($request->filled('location')){
             $location = $request->location;
@@ -43,7 +50,8 @@ class FoodController extends Controller
         $Food->shopName = $request->shopName;
         $Food->food = $request->food;
         $Food->location = $location;
-        $Food->photo = $photoPath;
+        $Food->photo_name = $photoName;
+        $Food->storage_path = $storagePath;
         $Food->url = $request->url;
         $Food->comment = $request->comment;
         $Food->keyWord = $keyWord;
@@ -55,7 +63,7 @@ class FoodController extends Controller
     public function edit(Request $request){
         $data = Food::find($request->id);
         if($request->has('deleteSubmit')){
-            //$data->delete();
+            $data->delete();
             return redirect('/')->with('delete_message','削除しました！');
         }else if($request->has('editSubmit')){
             //バリデーション
@@ -64,14 +72,24 @@ class FoodController extends Controller
             ]) ;
             //アップロードされたファイルの保存・削除処理
             if($request->hasFile('photo')){
-                $path = $request->photo->store('public/foodImg');
-                $photoPath = str_replace('public/','storage/',$path);
+                //画像ファイルリサイズ処理
+                $file = $request->file('photo');
+                $image = Image::make($file)
+                    ->resize(1200,null,function($constraint){
+                        $constraint->aspectRatio();
+                    });
+                $photoName = $image->store('/','dropbox');
+                $storagePath = Storage::disk('dropbox')->url($photoName);
+                
                 //以前の画像ファイルの削除
-                $oldFilePath = str_replace('storage/','public/',$data->toArray()['photo']);
-                if(!Str::contains($oldFilePath,'no_image.jpg')){
-                    Storage::delete($oldFilePath);
+                $oldFileName = $data->toArray()['photo_name'];
+                if(!Str::contains($oldFileName,'no_image.jpg')){
+                    Storage::disk('dropbox')->delete($oldFileName);
                 }
-                $data->fill(['photo' => $photoPath])->save();
+                $data->fill([
+                    'photo_name' => $photoName,
+                    'storage_path' => $storagePath
+                    ])->save();
             }
             //locationに入力がない場合shopNameの値を入れる
             if($request->filled('location')){
