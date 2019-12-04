@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Food;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Inetervention\Image\Facades\Image;
+use Intervention\Image\Facades\Image;
 class FoodController extends Controller
 {
     public function index(Request $request){
