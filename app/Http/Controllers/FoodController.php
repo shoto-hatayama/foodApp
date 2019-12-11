@@ -33,7 +33,7 @@ class FoodController extends Controller
                 ->resize(1200,null,function($constraint){
                     $constraint->aspectRatio();
                 });
-            $photoName = $request->getClientOriginalName();
+            $photoName = $file->getClientOriginalName();
             $filePath = '/'.config('folder').'/';
             Storage:disk('dropbox')->put($filePath.$photoName,(string)$image->encode('jpg',100),'public');
         }else{
@@ -80,7 +80,7 @@ class FoodController extends Controller
                     ->resize(1200,null,function($constraint){
                         $constraint->aspectRatio();
                     });
-                $photoName = $request->getClientOriginalName();
+                $photoName = $file->getClientOriginalName();
                 $filePath = '/'.config('folder').'/';
                 Storage:disk('dropbox')->put($filePath.$photoName,(string)$image->encode('jpg',100),'public');
                 $storagePath = Storage::disk('dropbox')->url($photoName);
