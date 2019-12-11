@@ -48,7 +48,7 @@
         </div>
         <div class="form-group">
             <label for="inputComment">ひとこと</label>
-            <textarea type="text" class="form-control" id="inputComment" name="comment" value="{{ $data->comment}}"></textarea>
+            <textarea type="text" class="form-control" id="inputComment" name="comment">{{ $data->comment}}</textarea>
         </div>
         <!-- //ジャンルは未実装
         <div class="form-group">
