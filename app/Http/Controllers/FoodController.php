@@ -24,7 +24,7 @@ class FoodController extends Controller
         //バリデーション
         $validate = $request->validate([
             'shopName' =>'required',
-            'photo' => 'size:10000|mimes:jpeg,png,jpg',
+            'photo' => 'max:10000|mimes:jpeg,png,jpg',
         ]);
         //アップロードされたファイルの保存処理
         if($request->hasFile('photo')){
@@ -72,7 +72,7 @@ class FoodController extends Controller
             //バリデーション
             $validate = $request->validate([
                 'shopName' => 'required',
-                'photo' => 'size:10000|mimes:jpeg,png,jpg',
+                'photo' => 'max:10000|mimes:jpeg,png,jpg',
             ]) ;
             //アップロードされたファイルの保存・削除処理
             if($request->hasFile('photo')){
