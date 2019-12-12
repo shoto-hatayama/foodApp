@@ -15,11 +15,11 @@
     <link rel="apple-touch-icon" sizes="152×152" href="https://www.dropbox.com/s/6tf5sro6co45dr2/apple-touch-icon.png">
     <title>ぱくぱく日記</title>
 </head>
-<header class="container-fluid bg-orange">
+<header class="container-fluid header-bg-color">
     <a href="/"><div class="text-center h1 text-light">ぱくぱく日記</div></a>
 </header>
 <body>
     @yield('content')
 </body>
-<footer class="footer mt-5"></footer>
+<footer class="footer-bg-color mt-5"></footer>
 </html>

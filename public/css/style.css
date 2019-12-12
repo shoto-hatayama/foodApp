@@ -23,8 +23,8 @@
     border-color:#FFA500 !important;
 }
 
-.bg-orange{
-    background-color: #FFA500;
+.header-bg-color{
+    background-color: #FDB36C;
 }
 
 .required::after{
@@ -32,9 +32,9 @@
     color:red;
 }
 
-.footer{
+.footer-bg-color{
     height:10vh;
-    background-color:#FFA500;
+    background-color:#FDB36C;
 }
 
 .btn-color{
