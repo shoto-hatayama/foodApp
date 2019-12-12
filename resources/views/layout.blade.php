@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ secure_asset('css/remodal.css') }}">
     <link rel="stylesheet" href="{{ secure_asset('css/remodal-default-theme.css') }}">
-    <link rel="apple-touch-icon" sizes="152×152" href="https://www.dropbox.com/s/6tf5sro6co45dr2/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="152×152" href="{{ secure_asset('/favicon.ico') }}">
+    <link rel="icon" href="{{ secure_asset('/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ secure_asset('/favicon.ico') }}">
     <title>ぱくぱく日記</title>
 </head>
 <header class="container-fluid header-bg-color">
