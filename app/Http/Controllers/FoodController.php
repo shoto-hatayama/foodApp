@@ -35,8 +35,7 @@ class FoodController extends Controller
                     $constraint->aspectRatio();
                 });
             $photoName = $file->getClientOriginalName();
-            $filePath = '/'.config('folder').'/';
-            Storage::disk('dropbox')->put($filePath.$photoName,(string)$image->encode('jpg',100),'public');
+            Storage::disk('dropbox')->put($photoName,(string)$image->encode('jpg',100),'public');
         }else{
             $photoName = "no_image.jpg";
         }
@@ -83,8 +82,7 @@ class FoodController extends Controller
                         $constraint->aspectRatio();
                     });
                 $photoName = $file->getClientOriginalName();
-                $filePath = '/'.config('folder').'/';
-                Storage::disk('dropbox')->put($filePath.$photoName,(string)$image->encode('jpg',100),'public');
+                Storage::disk('dropbox')->put($$photoName,(string)$image->encode('jpg',100),'public');
                 $storagePath = Storage::disk('dropbox')->url($photoName);
                 
                 //以前の画像ファイルの削除

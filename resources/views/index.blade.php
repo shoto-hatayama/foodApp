@@ -46,7 +46,7 @@
     <div class="col-sm-12 col-lg-4 mb-5">
       <div class="card shadow-lg hoverBorder">
           <div class="row">
-            <img class="col  row-eq-height" id="{{ 'foodImg'.$data->id }}" src="{{ $data->storage_path }}" alt="">
+            <img class="col  row-eq-height" id="{{ 'foodImg'.$data->id }}" src="{{ Storage::disk('dropbox')->url($data->photo_name) }}" alt="">
           </div>
           <div class="card-body">
             <h5 class="row">
